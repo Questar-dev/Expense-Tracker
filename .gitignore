@@ -1,3 +1,7 @@
 *.log
 *.txt
 *.pyc
+etenv/
+*.env
+demo.py
+progress/
