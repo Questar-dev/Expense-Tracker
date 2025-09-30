@@ -5,3 +5,4 @@ etenv/
 *.env
 demo.py
 progress/
+__pycache__/
