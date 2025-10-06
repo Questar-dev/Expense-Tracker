@@ -2,7 +2,8 @@
 
 
 from modules.dbconn import DbConn
-from DB.queries.user_qu import USER_QUERIES
+from modules.user import User
+from DB.queries.queries import USER_QUERIES
 
 class UserRepo:
     def __init__(self, dbname, user, password, host='localhost', port='5432'):
@@ -12,7 +13,7 @@ class UserRepo:
         self.host = host
         self.port = port
 
-    def add_user(self, user):
+    def add_user(self, user: User):
         query = USER_QUERIES['add_user']
 
         params = (user.username, user.full_name, user.email, user.password_hash, user.currency)
