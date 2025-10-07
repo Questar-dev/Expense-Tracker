@@ -35,5 +35,14 @@ class UserRepo:
             user_row = db.cur.fetchone()
         
         return user_row
+    
+    def get_users_infos(self) -> list[tuple]:
+        """Returns a list of (user_id, email, password)"""
+        query = USER_QUERIES['get_users_infos']
+        with DbConn(self.dbname, self.user, self.password, self.host, self.port) as db:
+            db.execute(query)
+            users_list = db.cur.fetchall()
+        
+        return users_list
 
 

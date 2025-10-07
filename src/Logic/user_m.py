@@ -31,7 +31,18 @@ class UserManager:
 
             return user
         
-    
+    def authentication(self, entered_email: str, entered_password: str):
+        from bcrypt import checkpw
+        entered_password = entered_password.encode()
+        for user_id, email, hashed_password_str in self._repo.get_users_infos():
+            if email == entered_email:
+                hashed_password_bytes = hashed_password_str.encode()
+                if checkpw(entered_password, hashed_password_bytes):
+                    return self.get_user(user_id)
+        
+        raise Exception("user not found")
+
+
 
 
 

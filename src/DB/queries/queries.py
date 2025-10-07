@@ -5,7 +5,9 @@ USER_QUERIES = {
 
     "delete_user":"DELETE FROM users WHERE user_id = %s;",
 
-    "get_user": "SELECT * FROM users WHERE user_id = %s;"
+    "get_user": "SELECT * FROM users WHERE user_id = %s;",
+
+    "get_users_infos": "SELECT user_id, email, password_hash FROM users;"
 }
 
 EXPENSE_QUERIES = {
@@ -22,5 +24,6 @@ CATEGORY_QUERIES = {
     "get_cat_by_name": "SELECT * FROM categories WHERE name = %s;",
 
     "get_cat_by_id": "SELECT * FROM categories WHERE id = %s;"
+
 }
 
