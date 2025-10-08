@@ -51,4 +51,14 @@ class CategoryManager:
             cate = Category.factory(category_row[0], category_row[1])
             return cate
 
-    
+    def list_categories(self) -> list[Category]:
+        try:
+            categories_list = self._repo.list_categories()
+        except Exception:
+            raise Exception('category error')
+        else:
+            categories = []
+            for category_row in categories_list:
+                cate = Category.factory(category_row[0], category_row[1])
+                categories.append(cate)
+            return categories

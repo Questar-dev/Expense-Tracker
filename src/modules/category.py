@@ -13,3 +13,5 @@ class Category:
         old_category.category_id = id
         return old_category
 
+    def __str__(self):
+        return f"Category {self.category_id}: {self.name}"

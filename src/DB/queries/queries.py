@@ -1,7 +1,7 @@
 
 
 USER_QUERIES = {
-    "add_user": "INSERT INTO users(username, full_name, email, password_hash, currency) VALUES (%s, %s, %s, %s, %s);",
+    "add_user": "INSERT INTO users(username, full_name, email, password_hash, currency) VALUES (%s, %s, %s, %s, %s) RETURNING user_id, created_at;",
 
     "delete_user":"DELETE FROM users WHERE user_id = %s;",
 
@@ -23,7 +23,9 @@ CATEGORY_QUERIES = {
 
     "get_cat_by_name": "SELECT * FROM categories WHERE name = %s;",
 
-    "get_cat_by_id": "SELECT * FROM categories WHERE id = %s;"
+    "get_cat_by_id": "SELECT * FROM categories WHERE id = %s;",
+
+    "list_categories": "SELECT * FROM categories;"
 
 }
 

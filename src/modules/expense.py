@@ -17,6 +17,7 @@ class Expense:
         old_expense_obj.date = date
         return old_expense_obj
 
-    
+    def __str__(self):
+        return f"Expense {self.expense_id}:\nUser {self.user_id}\nCategory {self.category_id}\nAmount {self.amount}\nDate {self.date}\nDescription {self.description}"
 
 

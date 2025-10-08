@@ -22,7 +22,9 @@ class User:
         return hashed_password_in_str
     
     def gen_username(self, full_name):
-        return full_name + '#01'
+        from uuid import uuid4
+        identifier = str(uuid4())[:4]
+        return full_name + f'_{identifier}'
 
     @classmethod
     def factory(cls, user_id, username, full_name: str, email: str, password: str, currency: str, created_at):
@@ -32,6 +34,9 @@ class User:
         old_user_obj.created_at = created_at
 
         return old_user_obj
+    
+    def __str__(self):
+        return f"User '{self.username}'\n{self.full_name}\n{self.email}\n{self.currency}"
 
     
 

@@ -7,12 +7,16 @@ class UserManager:
     def __init__(self, dbname, user, password, host='localhost', port='5432'):
         self._repo = UserRepo(dbname, user, password, host, port)
 
-    def add_user(self, full_name: str, email: str, password: str, currency: str='USA'):
+    def add_user(self, full_name: str, email: str, password: str, currency: str='USA') -> User:
         user = User(full_name, email, password, currency)
         try:
-            self._repo.add_user(user)
+            user_row = self._repo.add_user(user)
         except Exception:
-            raise Exception("Something is wrong")
+            raise Exception("user error")
+        else:
+            user.user_id = user_row[0]
+            user.created_at = user_row[1]
+            return user
     
     def delete_user(self, user_id):
         try:

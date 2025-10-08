@@ -46,4 +46,10 @@ class CategoryRepo:
         
         return category_row
 
-
+    def list_categories(self) -> list[tuple]:
+        query = CATEGORY_QUERIES['list_categories']
+        with DbConn(self.dbname, self.user, self.password, self.host, self.port) as db:
+            db.execute(query)
+            categoryies_list = db.cur.fetchall()
+        
+        return categoryies_list
